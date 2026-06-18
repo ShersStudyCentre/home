@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sher's Study Centre | Tuition & Projects Chatsworth</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
     <style>
-        /* --- CSS VARIABLES & RESET --- */
         :root {
             --primary-blue: #003366;
             --accent-teal: #17a2b8;
@@ -18,114 +15,43 @@
             --text-light: #666666;
             --shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; background-color: var(--white); }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; }
         h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; color: var(--primary-blue); }
         a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* --- NAVIGATION --- */
-        nav {
-            background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
+        
+        /* NAVIGATION */
+        nav { background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo { display: flex; align-items: center; gap: 10px; }
-        .nav-logo { height: 45px; width: auto; display: block; }
-
+        .nav-logo { height: 45px; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
         .nav-links { display: flex; gap: 2rem; }
         .nav-links a { font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent-teal); }
-
-        /* --- IMPROVED HAMBURGER MENU STYLING --- */
-        .menu-container { 
-            position: relative; 
-            display: inline-block; 
-            padding: 10px 0; 
-        }
-
-        .hamburger-icon { 
-            font-size: 28px; 
-            cursor: pointer; 
-            padding: 5px 15px; 
-            color: var(--primary-blue); 
-            border: 2px solid var(--primary-blue); 
-            border-radius: 5px; 
-        }
         
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background-color: var(--white);
-            min-width: 180px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            z-index: 1001;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        /* The fix: keep visible if hovering icon OR hovering the list itself */
-        .menu-container:hover .dropdown-content,
-        .dropdown-content:hover {
-            display: block;
-        }
-
-        .dropdown-content a {
-            color: var(--text-dark);
-            padding: 12px 16px;
-            display: block;
-            font-weight: 600;
-        }
-
+        /* HAMBURGER MENU */
+        .menu-container { position: relative; padding: 10px 0; }
+        .hamburger-icon { font-size: 24px; cursor: pointer; padding: 5px 15px; color: var(--primary-blue); border: 2px solid var(--primary-blue); border-radius: 5px; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: var(--white); min-width: 160px; box-shadow: var(--shadow); border-radius: 8px; z-index: 1001; }
+        .menu-container:hover .dropdown-content, .dropdown-content:hover { display: block; }
+        .dropdown-content a { color: var(--text-dark); padding: 12px 16px; display: block; font-weight: 600; }
         .dropdown-content a:hover { background-color: var(--light-bg); color: var(--accent-teal); }
 
-        /* --- SECTIONS --- */
-        .hero {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover; background-position: center; color: var(--white);
-            padding: 5rem 5%; text-align: center; min-height: 80vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
+        /* SECTIONS - REST OF YOUR STYLES */
+        .hero { background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; color: var(--white); padding: 5rem 5%; text-align: center; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .hero h1 { color: var(--white); font-size: 3rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; color: #e0e0e0; }
-        
-        .about, .services, .projects { padding: 4rem 5%; }
-        .about { text-align: center; }
+        .about, .services, .projects, .booking { padding: 4rem 5%; }
         .services { background-color: var(--light-bg); }
         .section-title { text-align: center; margin-bottom: 3rem; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        
         .service-card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); }
         .icon-box { font-size: 2rem; color: var(--accent-teal); margin-bottom: 1rem; }
-        
-        .project-card { border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
-        .project-img { height: 200px; background-color: #ddd; }
-        .project-details { padding: 1.5rem; }
-        
-        .booking { padding: 4rem 5%; background-color: var(--primary-blue); color: var(--white); display: flex; justify-content: center; }
-        .form-wrapper { background: var(--white); color: var(--text-dark); padding: 2.5rem; border-radius: 15px; width: 100%; max-width: 600px; }
+        .form-wrapper { background: var(--white); padding: 2.5rem; border-radius: 15px; width: 100%; max-width: 600px; margin: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .form-group { margin-bottom: 1rem; }
         .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
-        
-        .submit-btn { background-color: #25D366; color: white; width: 100%; padding: 15px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        
+        .submit-btn { background-color: #25D366; color: white; width: 100%; padding: 15px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; }
         footer { background: #002244; color: #aaa; padding: 3rem 5%; text-align: center; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2rem; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -135,8 +61,65 @@
             <img src="logo.png" alt="Sher's Study Centre Logo" class="nav-logo">
             <h1>Sher's Study Centre</h1>
         </div>
-        
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#tuition">Tuition</a>
-            <a href
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tuition">Tuition</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-container">
+                <div class="hamburger-icon">☰</div>
+                <div class="dropdown-content">
+                    <a href="#contact">Book a Lesson</a>
+                    <a href="https://shersstudycentre.github.io/MicrosoftbeginnerCourse/">Courses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Build Confidence. Boost Marks.</h1>
+        <p>Professional Maths & Afrikaans tuition in Chatsworth.</p>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <p>We provide a safe, structured, and encouraging environment.</p>
+    </section>
+
+    <section id="tuition" class="services">
+        <h2 class="section-title">Academic Tuition Services</h2>
+        <div class="grid-container">
+            <div class="service-card"><div class="icon-box">📐</div><h3>Mathematics</h3><p>Grades 1 to 11</p></div>
+            <div class="service-card"><div class="icon-box">📝</div><h3>Afrikaans (FAL)</h3><p>Grades 1 to 11</p></div>
+        </div>
+    </section>
+
+    <section id="contact" class="booking">
+        <div class="form-wrapper">
+            <h2>Secure Your Spot</h2>
+            <form id="sherEnquiryForm">
+                <div class="form-group"><input type="text" id="parentName" placeholder="Parent Name"></div>
+                <div class="form-group"><input type="tel" id="contactNum" placeholder="WhatsApp Number"></div>
+                <div class="form-group"><input type="text" id="childName" placeholder="Child's Name"></div>
+                <div class="form-group"><select id="grade"><option>Select Grade</option></select></div>
+                <button type="button" class="submit-btn" onclick="sendToWhatsapp()">Send to WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Sher's Study Centre. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function sendToWhatsapp() {
+            var parentName = document.getElementById("parentName").value;
+            var contactNum = document.getElementById("contactNum").value;
+            var url = "https://wa.me/27613464965?text=New Enquiry from " + parentName;
+            window.open(url, '_blank').focus();
+        }
+    </script>
+</body>
+</html>
