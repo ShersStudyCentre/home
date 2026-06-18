@@ -3,503 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sher's Study Centre | Tuition & Projects Chatsworth</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+    <title>Microsoft Office Course | Sher's Study Centre</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
-        :root {
-            --primary-blue: #003366; /* Deep Blue - Trust */
-            --accent-teal: #17a2b8;  /* Turquoise - Growth */
-            --light-bg: #f4f6f8;     /* Soft Grey - Academic */
-            --white: #ffffff;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+        body { 
+            font-family: "Century Gothic", sans-serif; 
+            margin: 0; padding: 0; 
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#dcd5c5 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #333; line-height: 1.6;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Fixed Header */
+        .logo-container {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 90px; background: #fdfbf7; 
+            position: fixed; top: 0; left: 0; right: 0; 
+            z-index: 1000; padding: 0 20px;
+            border-bottom: 3px solid #D4AF37;
         }
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--white);
+        /* Hover-based Hamburger Menu */
+        .menu-trigger { cursor: pointer; position: relative; padding: 10px; }
+        .line { width: 30px; height: 3px; background: #87CEEB; margin: 5px 0; }
+        
+        .dropdown {
+            display: none; position: absolute; left: 0; top: 50px;
+            background: #fff; min-width: 150px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
         }
+        /* Show menu on hover */
+        .menu-trigger:hover .dropdown { display: block; }
+        
+        .dropdown a { display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee; }
+        .dropdown a:hover { background: #87CEEB; color: white; }
 
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--primary-blue);
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* --- NAVIGATION --- */
-        nav {
-            background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* --- NEW LOGO STYLING --- */
-        .nav-logo {
-            height: 45px; /* Set height for a modern navigation bar look */
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--accent-teal); }
-
-        .cta-btn {
-            background-color: var(--accent-teal);
-            color: var(--white);
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-
-        .cta-btn:hover { transform: translateY(-2px); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding: 5rem 5%;
-            text-align: center;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero h1 {
-            color: var(--white);
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            color: #e0e0e0;
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about {
-            padding: 4rem 5%;
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: var(--light-bg);
-            padding: 1rem;
-            border-radius: 8px;
-            width: 200px;
-            border-bottom: 3px solid var(--accent-teal);
-        }
-
-        /* --- SERVICES (TUITION) --- */
-        .services {
-            padding: 4rem 5%;
-            background-color: var(--light-bg);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover { transform: translateY(-5px); }
-
-        .icon-box {
-            font-size: 2rem;
-            color: var(--accent-teal);
-            margin-bottom: 1rem;
-        }
-
-        /* --- PROJECTS & MODELS --- */
-        .projects {
-            padding: 4rem 5%;
-        }
-
-        .project-card {
-            border: 1px solid #eee;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .project-img {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
-
-        .project-details {
-            padding: 1.5rem;
-        }
-
-        .tag {
-            background: var(--primary-blue);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-        }
-
-        /* --- BOOKING FORM SECTION --- */
-        .booking {
-            padding: 4rem 5%;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            display: flex;
-            justify-content: center;
-        }
-
-        .form-wrapper {
-            background: var(--white);
-            color: var(--text-dark);
-            padding: 2.5rem;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-family: inherit;
-        }
-
-        .checkbox-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .checkbox-group label {
-            font-weight: 400;
-        }
-
-        .submit-btn {
-            background-color: #25D366; /* WhatsApp Green */
-            color: white;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .submit-btn:hover { background-color: #1ebc57; }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #002244;
-            color: #aaa;
-            padding: 3rem 5%;
-            text-align: center;
-        }
-		/* --- Project Card Clickable Hover Effect --- */
-        .project-card a:hover .project-img {
-            opacity: 0.85;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplified for mobile */
-            .hero h1 { font-size: 2rem; }
-            .grid-container { grid-template-columns: 1fr; }
-        }
+        section { padding: 20px; max-width: 800px; margin: auto; scroll-margin-top: 100px; }
+        h2 { color: #D4AF37; border-bottom: 2px solid #87CEEB; padding-bottom: 5px; }
+        
+        .footer-band { background-color: #87CEEB; color: white; text-align: center; padding: 30px 20px; margin-top: 40px; border-top: 5px solid #D4AF37; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">
-            <img src="logo.png" alt="Sher's Study Centre Logo" class="nav-logo">
-			<h1>Sher's Study Centre</h1>
-        </div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#tuition">Tuition</a>
-            <a href="#projects">Projects</a>
-			<a href="https://shersstudycentre.github.io/MicrosoftbeginnerCourse/">Courses</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <a href="#contact" class="cta-btn">Book a Lesson</a>
-    </nav>
-
-    <section class="hero">
-        <h1>Build Confidence. Boost Marks.<br>Master the Curriculum.</h1>
-        <p>Professional Maths & Afrikaans tuition and expert school project support in Umhlatuzana. Led by Sherana Perumal, a qualified teacher who understands how your child learns.</p>
-        <a href="#contact" class="cta-btn" style="font-size: 1.1rem;">Start Your Journey</a>
-    </section>
-
-    <section id="about" class="about">
-        <div class="about-content">
-            <h2 class="section-title">Why Choose Sher's Study Centre?</h2>
-            <p>We provide a safe, structured, and encouraging environment in Chatsworth where learners feel understood. We don't just help with homework; we build the skills needed for long-term academic success.</p>
-            
-            <div class="badge-container">
-                <div class="badge">
-                    <h4>Qualified Teacher</h4>
-                    <p style="font-size: 0.9rem;">Real classroom experience & curriculum knowledge.</p>
-                </div>
-                <div class="badge">
-                    <h4>Diagnostic</h4>
-                    <p style="font-size: 0.9rem;">We identify gaps before we start teaching.</p>
-                </div>
-                <div class="badge">
-                    <h4>Grades 1 - 11</h4>
-                    <p style="font-size: 0.9rem;">Consistent support from foundation to FET phase.</p>
-                </div>
+    <div class="logo-container">
+        <div class="menu-trigger">
+            <div class="line"></div><div class="line"></div><div class="line"></div>
+            <div class="dropdown">
+                <a href="#book-a-lesson">Book a Lesson</a>
+                <a href="PASTE_YOUR_LINK_HERE">Courses</a>
             </div>
         </div>
+        
+        <img src="logo.png" alt="Logo" style="height:60px;">
+    </div>
+
+    <div style="padding-top: 100px;"></div>
+
+    <section id="about">
+        <h2>About the Course</h2>
+        <p>Your content here...</p>
     </section>
 
-    <section id="tuition" class="services">
-        <h2 class="section-title">Academic Tuition Services</h2>
-        <div class="grid-container">
-            <div class="service-card">
-                <div class="icon-box">📐</div>
-                <h3>Mathematics</h3>
-                <p style="color:var(--text-light); margin-bottom:1rem;">Grades 1 to 11</p>
-                <p>From foundation phase basics to complex algebra and geometry. We focus on problem-solving skills and understanding the 'why' behind the numbers.</p>
-                <ul style="margin-top:1rem; font-size:0.9rem; color:var(--text-light);">
-                    <li>• Exam Preparation</li>
-                    <li>• Remediation for struggling learners</li>
-                    <li>• Weekly worksheets</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="icon-box">📝</div>
-                <h3>Afrikaans (FAL)</h3>
-                <p style="color:var(--text-light); margin-bottom:1rem;">Grades 1 to 11</p>
-                <p>Many learners struggle with Afrikaans because they don't hear it enough. We focus on vocabulary, sentence construction (STOMPI), and comprehension confidence.</p>
-                <ul style="margin-top:1rem; font-size:0.9rem; color:var(--text-light);">
-                    <li>• Oral preparation</li>
-                    <li>• Grammar rules simplified</li>
-                    <li>• Creative writing help</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-   <section id="projects" class="projects">
-        <h2 class="section-title">School Projects & Models</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto;">
-            Take the stress out of school projects. We provide guidance, materials, and construction support for Technology and Science models, ensuring they meet strict school rubrics.
-        </p>
-
-        <div class="grid-container">
-            
-            <div class="project-card">
-                <a href="Lighthouse.jpeg" target="_blank" title="View Full Electric Circuit Model">
-                    <div class="project-img">
-                         <img src="Lighthouse.jpeg" alt="Lighthouse Model" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                </a>
-                <div class="project-details">
-                    <span class="tag">Science</span> <span class="tag" style="background:#666;">Gr 6-9</span>
-                    <h4 style="margin-top:0.5rem;">Electric Circuits</h4>
-                    <p style="font-size:0.9rem; margin-top:0.5rem;">Working lighthouse model with lights, and switches for NS/Tech.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <a href="modelhouse.jpeg" target="_blank" title="View Full Hydraulic Crane Model">
-                    <div class="project-img">
-                         <img src="modelhouse.jpeg" alt="Model House" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                </a>
-                <div class="project-details">
-                    <span class="tag">Tech/Mech</span> <span class="tag" style="background:#666;">Gr 7-9</span>
-                    <h4 style="margin-top:0.5rem;">Model House</h4>
-                    <p style="font-size:0.9rem; margin-top:0.5rem;">Model house with working lights, fan, and buzzer</p>
-                </div>
-            </div>
-			
-        </div>
-    </section>
-
-    <section id="contact" class="booking">
-        <div class="form-wrapper">
-            <h2 style="text-align: center; margin-bottom: 0.5rem;">Secure Your Spot</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Fill in the details below to send an instant enquiry to Sherana via WhatsApp.</p>
-            
-            <form id="sherEnquiryForm">
-                <div class="form-group">
-                    <label>Parent Name:</label>
-                    <input type="text" id="parentName" placeholder="Enter your name">
-                </div>
-                
-                <div class="form-group">
-                    <label>WhatsApp Number:</label>
-                    <input type="tel" id="contactNum" placeholder="e.g. 082 123 4567">
-                </div>
-
-                <div class="form-group">
-                    <label>Child's Name:</label>
-                    <input type="text" id="childName" placeholder="Learner's name">
-                </div>
-                
-                <div class="form-group">
-                    <label>Grade:</label>
-                    <select id="grade">
-                        <option value="Select Grade">Select Grade</option>
-                        <option value="Grade 1-3 (Foundation)">Foundation Phase (Gr 1-3)</option>
-                        <option value="Grade 4-6 (Intermediate)">Intermediate Phase (Gr 4-6)</option>
-                        <option value="Grade 7-9 (Senior)">Senior Phase (Gr 7-9)</option>
-                        <option value="Grade 10-11 (FET)">FET Phase (Gr 10-11)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>What do you need help with?</label>
-                    <div class="checkbox-group">
-                        <div><input type="checkbox" id="maths" value="Maths"> Maths</div>
-                        <div><input type="checkbox" id="afrikaans" value="Afrikaans"> Afrikaans</div>
-                        <div><input type="checkbox" id="projects" value="Project Help"> School Projects</div>
-                    </div>
-                </div>
-
-                <button type="button" class="submit-btn" onclick="sendToWhatsapp()">
-                    Send to WhatsApp 
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <h3>Sher's Study Centre</h3>
-        <p>Umhlatuzana, Chatsworth</p>
-        <p style="font-size: 0.9rem; margin-top: 1rem;">© 2024 Sher's Study Centre. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        function sendToWhatsapp() {
-            // 1. Get Values
-            var parentName = document.getElementById("parentName").value;
-            var contactNum = document.getElementById("contactNum").value;
-            var childName = document.getElementById("childName").value;
-            var grade = document.getElementById("grade").value;
-            
-            // 2. Get Checkboxes
-            var subjects = [];
-            if (document.getElementById("maths").checked) subjects.push("Maths");
-            if (document.getElementById("afrikaans").checked) subjects.push("Afrikaans");
-            if (document.getElementById("projects").checked) subjects.push("Project Help");
-            var subjectString = subjects.join(", ");
-
-            // 3. Validation
-            if(parentName === "" || contactNum === "") {
-                alert("Please fill in your name and contact number.");
-                return;
-            }
-
-            // 4. Construct the Message
-            var message = "*New Enquiry for Sher's Study Centre*" + "%0a" +
-                          "-------------------------------" + "%0a" +
-                          "*Parent:* " + parentName + "%0a" +
-                          "*Contact:* " + contactNum + "%0a" +
-                          "*Child:* " + childName + "%0a" +
-                          "*Grade:* " + grade + "%0a" +
-                          "*Interested in:* " + subjectString + "%0a" +
-                          "-------------------------------";
-
-            // 5. UPDATE THIS NUMBER (Use format: 27821234567)
-            var phoneNumber = "27613464965"; 
-            
-            var url = "https://wa.me/" + phoneNumber + "?text=" + message;
-
-            // 6. Open WhatsApp
-            window.open(url, '_blank').focus();
-        }
-    </script>
-
-</body>
+    </body>
 </html>
