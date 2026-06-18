@@ -45,9 +45,21 @@
         .nav-links a { font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent-teal); }
 
-        /* --- NEW HAMBURGER MENU STYLING --- */
-        .menu-container { position: relative; display: inline-block; }
-        .hamburger-icon { font-size: 28px; cursor: pointer; padding: 5px 15px; color: var(--primary-blue); border: 2px solid var(--primary-blue); border-radius: 5px; }
+        /* --- IMPROVED HAMBURGER MENU STYLING --- */
+        .menu-container { 
+            position: relative; 
+            display: inline-block; 
+            padding: 10px 0; 
+        }
+
+        .hamburger-icon { 
+            font-size: 28px; 
+            cursor: pointer; 
+            padding: 5px 15px; 
+            color: var(--primary-blue); 
+            border: 2px solid var(--primary-blue); 
+            border-radius: 5px; 
+        }
         
         .dropdown-content {
             display: none;
@@ -60,7 +72,13 @@
             border-radius: 8px;
             z-index: 1001;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 5px;
+        }
+
+        /* The fix: keep visible if hovering icon OR hovering the list itself */
+        .menu-container:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
         }
 
         .dropdown-content a {
@@ -71,9 +89,8 @@
         }
 
         .dropdown-content a:hover { background-color: var(--light-bg); color: var(--accent-teal); }
-        .menu-container:hover .dropdown-content { display: block; }
 
-        /* --- HERO & SECTIONS (Existing Styles Maintained) --- */
+        /* --- SECTIONS --- */
         .hero {
             background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover; background-position: center; color: var(--white);
@@ -122,54 +139,4 @@
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#tuition">Tuition</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-        <div class="menu-container">
-            <div class="hamburger-icon">☰</div>
-            <div class="dropdown-content">
-                <a href="#contact">Book a Lesson</a>
-                <a href="https://shersstudycentre.github.io/MicrosoftbeginnerCourse/">Courses</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <h1>Build Confidence. Boost Marks.<br>Master the Curriculum.</h1>
-        <p>Professional Maths & Afrikaans tuition and expert school project support in Umhlatuzana.</p>
-        <a href="#contact" style="background:var(--accent-teal); color:white; padding: 1rem 2rem; border-radius: 50px; font-weight: 600;">Start Your Journey</a>
-    </section>
-
-    <script>
-        function sendToWhatsapp() {
-            var parentName = document.getElementById("parentName").value;
-            var contactNum = document.getElementById("contactNum").value;
-            var childName = document.getElementById("childName").value;
-            var grade = document.getElementById("grade").value;
-            
-            var subjects = [];
-            if (document.getElementById("maths").checked) subjects.push("Maths");
-            if (document.getElementById("afrikaans").checked) subjects.push("Afrikaans");
-            if (document.getElementById("projects").checked) subjects.push("Project Help");
-            var subjectString = subjects.join(", ");
-
-            if(parentName === "" || contactNum === "") {
-                alert("Please fill in your name and contact number.");
-                return;
-            }
-
-            var message = "*New Enquiry for Sher's Study Centre*" + "%0a" +
-                          "*Parent:* " + parentName + "%0a" +
-                          "*Contact:* " + contactNum + "%0a" +
-                          "*Child:* " + childName + "%0a" +
-                          "*Grade:* " + grade + "%0a" +
-                          "*Interested in:* " + subjectString;
-
-            var phoneNumber = "27613464965"; 
-            var url = "https://wa.me/" + phoneNumber + "?text=" + message;
-            window.open(url, '_blank').focus();
-        }
-    </script>
-</body>
-</html>
+            <a href
